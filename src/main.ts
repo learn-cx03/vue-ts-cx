@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import { registerApp } from './global'
+import { globalRegister } from './global'
+import './service/axios_demo'
 
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
@@ -11,7 +12,7 @@ import store from './store'
 
 const app = createApp(App)
 
-registerApp(app)
+app.use(globalRegister)
 app.use(router)
 app.use(store)
 // app.use(ElementPlus)

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { globalRegister } from './global'
 import './service/axios_demo'
-
+import cxRequest from './service'
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
 
@@ -20,3 +20,9 @@ app.mount('#app')
 
 console.log(process.env.VUE_APP_BASE_URL)
 console.log(process.env.VUE_APP_BASE_NAME)
+
+// cxRequest.get()
+cxRequest.request({
+  url: '/home/multidata',
+  method: 'GET'
+})

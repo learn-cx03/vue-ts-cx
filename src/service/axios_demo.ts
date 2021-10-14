@@ -1,22 +1,22 @@
 import axios from 'axios'
 
-axios.get('http://123.207.32.32:8000/home/multidata').then((res) => {
-  console.log(res.data)
-})
+// axios.get('http://123.207.32.32:8000/home/multidata').then((res) => {
+//   console.log(res.data)
+// })
 
 axios.defaults.baseURL = 'http://httpbin.org'
 axios.defaults.timeout = 10000
 
-axios
-  .get('/get', {
-    params: {
-      name: 'coderwhy',
-      age: 18
-    }
-  })
-  .then((res) => {
-    console.log(res.data)
-  })
+// axios
+//   .get('/get', {
+//     params: {
+//       name: 'coderwhy',
+//       age: 18
+//     }
+//   })
+//   .then((res) => {
+//     console.log(res.data)
+//   })
 // axios
 //   .post('http//httpbin.org/post', {
 //     data: {
@@ -27,15 +27,15 @@ axios
 //   .then((res) => {
 //     console.log(res.data)
 //   })
-axios
-  .all([
-    axios.get('/get', { params: { name: 'why', age: 18 } }),
-    axios.post('/post', { data: { name: 'why', age: 20 } })
-  ])
-  .then((res) => {
-    console.log(res[0])
-    console.log(res[1])
-  })
+// axios
+//   .all([
+//     axios.get('/get', { params: { name: 'why', age: 18 } }),
+//     axios.post('/post', { data: { name: 'why', age: 20 } })
+//   ])
+//   .then((res) => {
+//     // console.log(res[0])
+//     // console.log(res[1])
+//   })
 
 //6.axios的拦截器
 //fn1:代表发送成功之后会执行的函数

@@ -9,4 +9,5 @@ export interface CXRequestinterceptors {
 
 export interface CXRequestConfig extends AxiosRequestConfig {
   interceptors?: CXRequestinterceptors
+  showLoading?: boolean
 }

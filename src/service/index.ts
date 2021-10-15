@@ -5,7 +5,12 @@ const cxRequest = new CXRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
-    requestInterceptor: (config) => {
+    requestInterceptor: (config: any) => {
+      const token = ''
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
+
       console.log('111')
       return config
     },

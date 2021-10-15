@@ -22,7 +22,22 @@ console.log(process.env.VUE_APP_BASE_URL)
 console.log(process.env.VUE_APP_BASE_NAME)
 
 // cxRequest.get()
+// cxRequest.request({
+//   url: '/home/multidata',
+//   method: 'GET',
+//   interceptors: {
+//     requestInterceptor: (config) => {
+//       console.log('单独请求的config')
+//       return config
+//     },
+//     responseInterceptor: (res) => {
+//       console.log('单独响应的response')
+//       return res
+//     }
+//   }
+// })
 cxRequest.request({
   url: '/home/multidata',
-  method: 'GET'
+  method: 'GET',
+  showLoading: false
 })

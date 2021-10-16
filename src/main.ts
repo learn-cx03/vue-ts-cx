@@ -36,8 +36,21 @@ console.log(process.env.VUE_APP_BASE_NAME)
 //     }
 //   }
 // })
-cxRequest.request({
-  url: '/home/multidata',
-  method: 'GET',
-  showLoading: false
-})
+
+interface DataType {
+  data: any
+  returnCode: string
+  success: boolean
+}
+
+cxRequest
+  .get<DataType>({
+    url: '/home/multidata',
+    // method: 'GET',
+    showLoading: false
+  })
+  .then((res) => {
+    console.log(res.data)
+    console.log(res.returnCode)
+    console.log(res.success)
+  })

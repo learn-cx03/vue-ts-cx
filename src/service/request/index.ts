@@ -74,21 +74,47 @@ class CXRequest {
     )
   }
 
-  request(config: CXRequestConfig): void {
-    if (config.interceptors?.requestInterceptor) {
-      config = config.interceptors.requestInterceptor(config)
-    }
-    if (config.showLoading === false) {
-      this.showLoading = config.showLoading
-    }
-    this.instance.request(config).then((res) => {
-      if (config.interceptors?.responseInterceptor) {
-        res = config.interceptors.responseInterceptor(res)
+  request<T>(config: CXRequestConfig): Promise<T> {
+    return new Promise((resolve, reject) => {
+      //1.单个请求对config的处理
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config)
       }
-      console.log(res)
-      //将showLoading设置为true这样不会影响下一个请求
-      this.showLoading = DEFALUT_LOADING
+      //2.判断是否
+      if (config.showLoading === false) {
+        this.showLoading = config.showLoading
+      }
+      this.instance
+        .request<any, T>(config)
+        .then((res) => {
+          //1.单个请求对数据的处理
+          if (config.interceptors?.responseInterceptor) {
+            res = config.interceptors.responseInterceptor(res)
+          }
+          console.log(res)
+          //将showLoading设置为true这样不会影响下一个请求
+          resolve(res)
+          this.showLoading = DEFALUT_LOADING
+        })
+        .catch((err) => {
+          this.showLoading = DEFALUT_LOADING
+          reject(err)
+          return err
+        })
     })
+  }
+
+  get<T>(config: CXRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+  post<T>(config: CXRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+  delete<T>(config: CXRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'DELETE' })
+  }
+  patch<T>(config: CXRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
 

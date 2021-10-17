@@ -74,7 +74,7 @@ class CXRequest {
     )
   }
 
-  request<T>(config: CXRequestConfig): Promise<T> {
+  request<T>(config: CXRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       //1.单个请求对config的处理
       if (config.interceptors?.requestInterceptor) {

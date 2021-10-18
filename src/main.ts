@@ -1,7 +1,10 @@
 import { createApp } from 'vue'
 import { globalRegister } from './global'
+import 'normalize.css'
+import './assets/css/index.less'
 import './service/axios_demo'
 import cxRequest from './service'
+import { Apple, Iphone } from '@element-plus/icons'
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
 
@@ -17,6 +20,8 @@ app.use(router)
 app.use(store)
 // app.use(ElementPlus)
 app.mount('#app')
+app.component('apple', Apple)
+app.component('iphone', Iphone)
 
 console.log(process.env.VUE_APP_BASE_URL)
 console.log(process.env.VUE_APP_BASE_NAME)

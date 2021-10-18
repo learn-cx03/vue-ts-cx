@@ -104,16 +104,16 @@ class CXRequest {
     })
   }
 
-  get<T>(config: CXRequestConfig): Promise<T> {
+  get<T>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
-  post<T>(config: CXRequestConfig): Promise<T> {
+  post<T>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
-  delete<T>(config: CXRequestConfig): Promise<T> {
+  delete<T>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
-  patch<T>(config: CXRequestConfig): Promise<T> {
+  patch<T>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

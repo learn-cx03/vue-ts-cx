@@ -7,13 +7,13 @@
         <template #label>
           <span><i class="el-icon-user-solid"></i> 账号登录</span>
         </template>
-        <h2>账号登录</h2>
+        <h2><login-account /></h2>
       </el-tab-pane>
       <el-tab-pane>
         <template #label>
           <span><i class="el-icon-mobile-phone"></i> 手机登录</span>
         </template>
-        <h2>手机登录</h2>
+        <h2><login-phone /></h2>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -21,7 +21,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import LoginPhone from './login-phone.vue'
+import LoginAccount from './login-account.vue'
+
 export default defineComponent({
+  components: {
+    LoginPhone,
+    LoginAccount
+  },
   setup() {
     return {}
   }
@@ -29,6 +36,7 @@ export default defineComponent({
 </script>
 <style scoped lang="less">
 .login-panel {
+  margin-bottom: 400px;
   width: 320px;
 }
 

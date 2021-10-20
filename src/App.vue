@@ -14,6 +14,8 @@ import 'element-plus/theme-chalk/el-tab-pane.css'
 import 'element-plus/theme-chalk/el-form-item.css'
 import 'element-plus/theme-chalk/el-form.css'
 import 'element-plus/theme-chalk/el-input.css'
+import 'element-plus/theme-chalk/el-checkbox.css'
+import 'element-plus/theme-chalk/el-link.css'
 export default defineComponent({
   name: 'App',
   components: {}

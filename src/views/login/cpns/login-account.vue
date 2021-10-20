@@ -1,6 +1,6 @@
 <template>
   <div class="login-account">
-    <el-form label-width="60px" :rules="rules" :model="account">
+    <el-form label-width="60px" :rules="rules" :model="account" ref="formRef">
       <el-form-item label="账号" prop="name">
         <el-input v-model="account.name" />
       </el-form-item>
@@ -12,7 +12,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
+import { ElForm } from 'element-plus'
+import { rules } from '../config/account-config'
 
 export default defineComponent({
   setup() {
@@ -20,40 +22,17 @@ export default defineComponent({
       name: '',
       password: ''
     })
-
-    const rules = {
-      name: [
-        {
-          required: true,
-          message: '用户名是必传内容',
-          trigger: 'blur'
-        },
-        {
-          patter: /^[a-z0-9]$/,
-          min: 5,
-          max: 10,
-          message: '用户名必须是5到10个数字或字母',
-          trigger: 'blur'
-        }
-      ],
-      password: [
-        {
-          required: true,
-          message: '密码是必传内容',
-          trigger: 'blur'
-        },
-        {
-          patter: /^[a-z0-9]$/,
-          min: 3,
-          message: '密码必须是3位以上的数字或字母',
-          trigger: 'blu'
-        }
-      ]
+    const loginAction = () => {
+      formRef.value?.validate((valid) => {
+        console.log(valid)
+      })
     }
-
+    const formRef = ref<InstanceType<typeof ElForm>>()
     return {
       account,
-      rules
+      rules,
+      loginAction,
+      formRef
     }
   }
 })

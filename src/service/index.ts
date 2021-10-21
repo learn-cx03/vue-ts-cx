@@ -11,19 +11,19 @@ const cxRequest = new CXRequest({
         config.headers.Authorization = `Bearer ${token}`
       }
 
-      console.log('111')
+      // console.log('111')
       return config
     },
     requestInterceptorCatch: (err) => {
-      console.log('222')
+      // console.log('222')
       return err
     },
     responseInterceptor: (res) => {
-      console.log('333')
+      // console.log('333')
       return res
     },
     responseInterceptorCatch: (err) => {
-      console.log('444')
+      // console.log('444')
       return err
     }
   }

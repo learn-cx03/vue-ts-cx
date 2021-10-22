@@ -6,6 +6,7 @@ import {
   requestUserMenusByRoleId
 } from '@/service/login/login'
 import localCache from '@/utils/cache'
+import router from '@/router'
 
 import { IAccount } from '@/service/login/type'
 import { IRootState } from '../type'
@@ -16,7 +17,8 @@ const loginModule: Module<ILoginState, IRootState> = {
   state() {
     return {
       token: '',
-      userInfo: {}
+      userInfo: {},
+      userMenus: []
     }
   },
   getters: {},
@@ -27,6 +29,9 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
     changeUserInfo(state, userInfo: any) {
       state.userInfo = userInfo
+    },
+    changeUserMenus(state, userMenus: any) {
+      state.userMenus = userMenus
     }
   },
   actions: {
@@ -47,9 +52,27 @@ const loginModule: Module<ILoginState, IRootState> = {
       //3.请求用户菜单
       const userMenusResult = await requestUserMenusByRoleId(userInfo.role.id)
       const userMenus = userMenusResult.data
-      console.log(userMenus)
+      commit('changeUserMenus', userMenus)
+      localCache.setCache('userMenus', userMenus)
       // phoneLoginAction({ commit }, payload: any) {
       //   console.log('执行phoneLoginAction')
+
+      //4.跳到我们的首页
+      router.push('/main')
+    },
+    loadLocalLogin({ commit }) {
+      const token = localCache.getCache('token')
+      if (token) {
+        commit('changeToken', token)
+      }
+      const userInfo = localCache.getCache('userInfo')
+      if (userInfo) {
+        commit('changeUserInfo', userInfo)
+      }
+      const userMenus = localCache.getCache('userMenus')
+      if (userMenus) {
+        commit('changeUserMenus', userMenus)
+      }
     }
   }
 }

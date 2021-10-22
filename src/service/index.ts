@@ -1,12 +1,16 @@
 //service统一的出口
 import CXRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
+
+import localCache from '@/utils/cache'
+
 const cxRequest = new CXRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config: any) => {
-      const token = ''
+      //携带token的拦截
+      const token = localCache.getCache('token')
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }

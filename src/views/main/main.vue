@@ -6,7 +6,10 @@
       </el-aside>
       <el-container class="page">
         <el-header class="page-header">Header</el-header>
-        <el-main class="page-content">Main</el-main>
+        <el-main class="page-content"
+          >Main
+          <span>为了上传git添加的</span>
+        </el-main>
       </el-container>
     </el-container>
   </div>

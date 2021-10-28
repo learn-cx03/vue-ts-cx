@@ -11,7 +11,11 @@ import {
   ElContainer,
   ElHeader,
   ElMain,
-  ElAside
+  ElAside,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubMenu
 } from 'element-plus'
 import { App } from 'vue'
 const components = [
@@ -26,7 +30,11 @@ const components = [
   ElContainer,
   ElHeader,
   ElMain,
-  ElAside
+  ElAside,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubMenu
 ]
 export default function (app: App): void {
   for (const component of components) {

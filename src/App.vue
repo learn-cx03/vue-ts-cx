@@ -24,6 +24,7 @@ import 'element-plus/theme-chalk/el-menu.css'
 import 'element-plus/theme-chalk/el-menu-item.css'
 import 'element-plus/theme-chalk/el-menu-item-group.css'
 import 'element-plus/theme-chalk/el-submenu.css'
+import 'element-plus/theme-chalk/el-icon.css'
 
 export default defineComponent({
   name: 'App',

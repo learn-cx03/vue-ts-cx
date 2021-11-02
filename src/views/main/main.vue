@@ -8,9 +8,8 @@
         <el-header class="page-header">
           <nav-header @foldchange="handleFoldChange"></nav-header>
         </el-header>
-        <el-main class="page-content"
-          >Main
-          <span>为了上传git添加的</span>
+        <el-main class="page-content">
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>

@@ -16,7 +16,11 @@ import {
   ElMenuItem,
   ElMenuItemGroup,
   ElSubMenu,
-  ElIcon
+  ElIcon,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElAvatar
 } from 'element-plus'
 import { App } from 'vue'
 const components = [
@@ -36,7 +40,11 @@ const components = [
   ElMenuItem,
   ElMenuItemGroup,
   ElSubMenu,
-  ElIcon
+  ElIcon,
+  ElDropdown,
+  ElDropdownItem,
+  ElDropdownMenu,
+  ElAvatar
 ]
 export default function (app: App): void {
   for (const component of components) {

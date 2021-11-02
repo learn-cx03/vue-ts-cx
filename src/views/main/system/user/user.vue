@@ -1,12 +1,38 @@
 <template>
   <div class="user">
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-    </ul>
+    <div>
+      <div class="search">
+        <el-form label-width="100px">
+          <el-row>
+            <el-col :span="8">
+              <el-form-item label="用户名">
+                <el-input />
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="密码">
+                <el-input show-password />
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="你喜欢的运动">
+                <el-select style="width: 100%">
+                  <el-option>篮球</el-option>
+                  <el-option>足球</el-option>
+                  <el-option>网球球</el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="创建">
+                <el-date-picker style="width: 100%"></el-date-picker>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+      <div class="content"></div>
+    </div>
   </div>
 </template>
 

@@ -29,6 +29,11 @@ import 'element-plus/theme-chalk/el-dropdown.css'
 import 'element-plus/theme-chalk/el-dropdown-item.css'
 import 'element-plus/theme-chalk/el-dropdown-menu.css'
 import 'element-plus/theme-chalk/el-avatar.css'
+import 'element-plus/theme-chalk/el-row.css'
+import 'element-plus/theme-chalk/el-col.css'
+import 'element-plus/theme-chalk/el-select.css'
+import 'element-plus/theme-chalk/el-option.css'
+import 'element-plus/theme-chalk/el-date-picker.css'
 
 export default defineComponent({
   name: 'App',

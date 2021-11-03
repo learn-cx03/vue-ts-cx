@@ -1,10 +1,10 @@
 <template>
   <div class="cx-form">
-    <el-form label-width="100px">
+    <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
-          <el-col :span="8">
-            <el-form-item :label="item.label">
+          <el-col v-bind="colLayout">
+            <el-form-item :label="item.label" class="form-item">
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
               >
@@ -46,6 +46,24 @@ export default defineComponent({
     formItems: {
       type: Array as PropType<IFormItem[]>,
       default: () => []
+    },
+    labelWidth: {
+      type: String,
+      default: '100px'
+    },
+    itemStyle: {
+      type: Object,
+      default: () => ({ padding: '10px 40px' })
+    },
+    colLayout: {
+      type: Object,
+      default: () => ({
+        xl: 6,
+        lg: 8,
+        md: 12,
+        sm: 24,
+        xs: 24
+      })
     }
   },
   setup() {
@@ -53,4 +71,8 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.cx-form {
+  padding-top: 22px;
+}
+</style>

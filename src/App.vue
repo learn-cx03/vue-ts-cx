@@ -34,6 +34,8 @@ import 'element-plus/theme-chalk/el-col.css'
 import 'element-plus/theme-chalk/el-select.css'
 import 'element-plus/theme-chalk/el-option.css'
 import 'element-plus/theme-chalk/el-date-picker.css'
+import 'element-plus/theme-chalk/el-breadcrumb.css'
+import 'element-plus/theme-chalk/el-breadcrumb-item.css'
 
 export default defineComponent({
   name: 'App',

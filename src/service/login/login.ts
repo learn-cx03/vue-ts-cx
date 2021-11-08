@@ -1,5 +1,6 @@
 import cxRequest from '../index'
-import { IAccount, IDataType, ILoginState } from './type'
+import { IAccount, ILoginState } from './type'
+import { IDataType } from '../types'
 
 enum LoginAPI {
   AccountLogin = '/login',

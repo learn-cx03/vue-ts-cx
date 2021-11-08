@@ -8,8 +8,3 @@ export interface ILoginState {
   id: number
   name: string
 }
-
-export interface IDataType<T = any> {
-  conde: number
-  data: T
-}

@@ -74,7 +74,7 @@ class CXRequest {
     )
   }
 
-  request<T>(config: CXRequestConfig<T>): Promise<T> {
+  request<T = any>(config: CXRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       //1.单个请求对config的处理
       if (config.interceptors?.requestInterceptor) {
@@ -104,16 +104,16 @@ class CXRequest {
     })
   }
 
-  get<T>(config: CXRequestConfig<any>): Promise<T> {
+  get<T = any>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
-  post<T>(config: CXRequestConfig<any>): Promise<T> {
+  post<T = any>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
-  delete<T>(config: CXRequestConfig<any>): Promise<T> {
+  delete<T = any>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
-  patch<T>(config: CXRequestConfig<any>): Promise<T> {
+  patch<T = any>(config: CXRequestConfig<any>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

@@ -2,14 +2,35 @@
   <div class="user">
     <page-search :searchFormConfig="searchFormConfig"></page-search>
     <div class="content">
-      <cx-table :listData="userList" :propList="propList">
+      <cx-table
+        :listData="userList"
+        :propList="propList"
+        :showIndexColumn="showIndexColumn"
+        :showSelectColumn="showSelectColumn"
+      >
         <template #status="scope"
-          ><el-button>{{
-            scope.row.enable ? '可用' : '不可用'
-          }}</el-button></template
+          ><el-button
+            plain
+            size="mini"
+            :type="scope.row.enable ? 'success' : 'danger'"
+            >{{ scope.row.enable ? '可用' : '不可用' }}</el-button
+          ></template
         >
         <template #createAt="scope">
-          <strong>{{ scope.row.createAt }}</strong>
+          <strong>{{ $filters.formatTime(scope.row.createAt) }}</strong>
+        </template>
+        <template #updateAt="scope">
+          <strong> {{ $filters.formatTime(scope.row.createAt) }}</strong>
+        </template>
+        <template #handler>
+          <div class="handler-btns">
+            <el-button size="mini" type="text"
+              ><el-icon><edit /></el-icon>编辑</el-button
+            >
+            <el-button size="mini" type="text "
+              ><el-icon><delete-filled /></el-icon>删除</el-button
+            >
+          </div>
         </template>
       </cx-table>
     </div>
@@ -22,6 +43,7 @@ import { searchFormConfig } from './config/search.config'
 import PageSearch from '@/components/page-search'
 import { useStore } from '@/store'
 import CxTable from '@/base-ui/table'
+import { DeleteFilled, Edit } from '@element-plus/icons'
 
 export default defineComponent({
   name: 'user',
@@ -54,17 +76,30 @@ export default defineComponent({
         label: '更新时间',
         minWidth: '250',
         slotName: 'updateAt'
+      },
+      {
+        label: '操作',
+        minWidth: '120',
+        slotName: 'handler'
       }
     ]
+
+    const showIndexColumn = true
+    const showSelectColumn = true
+
     return {
       searchFormConfig,
       userList,
-      propList
+      propList,
+      showIndexColumn,
+      showSelectColumn
     }
   },
   components: {
     PageSearch,
-    CxTable
+    CxTable,
+    Edit,
+    DeleteFilled
   }
 })
 </script>

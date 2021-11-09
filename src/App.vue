@@ -1,11 +1,16 @@
 <template>
   <div class="app">
-    <router-view></router-view>
+    <el-config-provider :locale="zhCn">
+      <router-view></router-view
+    ></el-config-provider>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
+import { ElConfigProvider } from 'element-plus'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 // import { ElButton } from 'element-plus'
 import 'element-plus/theme-chalk/el-button.css'
 import 'element-plus/theme-chalk/el-loading.css'
@@ -38,10 +43,18 @@ import 'element-plus/theme-chalk/el-breadcrumb.css'
 import 'element-plus/theme-chalk/el-breadcrumb-item.css'
 import 'element-plus/theme-chalk/el-table.css'
 import 'element-plus/theme-chalk/el-table-column.css'
+import 'element-plus/theme-chalk/el-pagination.css'
 
 export default defineComponent({
   name: 'App',
-  components: {}
+  components: {
+    ElConfigProvider
+  },
+  setup() {
+    return {
+      zhCn
+    }
+  }
 })
 </script>
 

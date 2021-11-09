@@ -7,7 +7,13 @@
         :propList="propList"
         :showIndexColumn="showIndexColumn"
         :showSelectColumn="showSelectColumn"
+        :title="title"
       >
+        <!--header中的插槽-->
+        <template #headerHandler>
+          <el-button type="primary" size="medium">新建用户</el-button>
+        </template>
+        <!--列表中的插槽-->
         <template #status="scope"
           ><el-button
             plain
@@ -58,7 +64,8 @@ export default defineComponent({
     })
 
     const userList = computed(() => store.state.system.userList)
-    const userCount = computed(() => store.state.system.userCount)
+
+    const title = '用户列表'
 
     const propList = [
       { prop: 'name', label: '用户名', minWidth: '100' },
@@ -92,7 +99,8 @@ export default defineComponent({
       userList,
       propList,
       showIndexColumn,
-      showSelectColumn
+      showSelectColumn,
+      title
     }
   },
   components: {

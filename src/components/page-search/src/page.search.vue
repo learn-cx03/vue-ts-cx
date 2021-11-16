@@ -7,7 +7,7 @@
         </template>
         <template #footer>
           <div class="handle-btns">
-            <el-button type="primary">
+            <el-button type="primary" @click="handleResetClick">
               <el-icon><help /></el-icon>
               重置</el-button
             >
@@ -40,16 +40,20 @@ export default defineComponent({
     Help,
     Search
   },
-  setup() {
-    const formData = ref({
-      id: '',
-      name: '',
-      password: '',
-      sport: '',
-      createTime: ''
-    })
+  setup(props) {
+    const formItems = props.searchFormConfig?.formItem ?? []
+    const formOriginData: any = {}
+    for (const item of formItems) {
+      formOriginData[item.field] = ''
+    }
+    const formData = ref(formOriginData)
+
+    const handleResetClick = () => {
+      formData.value = formOriginData
+    }
     return {
-      formData
+      formData,
+      handleResetClick
     }
   }
 })

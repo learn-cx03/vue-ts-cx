@@ -88,6 +88,12 @@ export default defineComponent({
   setup(props, { emit }) {
     const formData = ref({ ...props.modelValue })
     watch(
+      () => props.modelValue,
+      (newValue) => {
+        formData.value = { ...props.modelValue }
+      }
+    )
+    watch(
       formData,
       (newValue) => {
         console.log(newValue)

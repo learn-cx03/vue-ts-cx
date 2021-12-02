@@ -11,7 +11,7 @@
               <el-icon><help /></el-icon>
               重置</el-button
             >
-            <el-button type="primary">
+            <el-button type="primary" @click="handleQueryClick">
               <el-icon><search /></el-icon>
 
               搜索</el-button
@@ -40,20 +40,32 @@ export default defineComponent({
     Help,
     Search
   },
-  setup(props) {
+  setup(props, { emit }) {
     const formItems = props.searchFormConfig?.formItem ?? []
     const formOriginData: any = {}
     for (const item of formItems) {
-      formOriginData[item.field] = ''
+      formOriginData[item.field] = ' '
     }
     const formData = ref(formOriginData)
 
+    //用户点击重置
     const handleResetClick = () => {
+      // for (const key in formOriginData) {
+      //   formData.value[`${key}`] = formOriginData[key]
+      // }
       formData.value = formOriginData
+      emit('resetBtnClick')
+    }
+
+    //3.优化：当用户点击搜索
+    const handleQueryClick = () => {
+      console.log('搜索')
+      emit('queryBtnClick', formData.value)
     }
     return {
       formData,
-      handleResetClick
+      handleResetClick,
+      handleQueryClick
     }
   }
 })

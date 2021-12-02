@@ -1,6 +1,10 @@
 <template>
   <div class="page-content">
-    <cx-table :listData="dataList" v-bind="contentTableConfig">
+    <cx-table
+      :listData="dataList"
+      :listCount="dataCount"
+      v-bind="contentTableConfig"
+    >
       <!--header中的插槽-->
       <template #headerHandler>
         <el-button type="primary" size="medium">新建用户</el-button>
@@ -56,22 +60,35 @@ export default defineComponent({
     Edit,
     DeleteFilled
   },
+
   setup(props) {
     const store = useStore()
-    store.dispatch('system/getPageListAction', {
-      pageName: props.pageName,
-      queryInfo: {
-        offset: 0,
-        size: 10
-      }
-    })
+    //发送网络请求
+    const getPageData = (queryInfo: any = {}) => {
+      store.dispatch('system/getPageListAction', {
+        pageName: props.pageName,
+        queryInfo: {
+          offset: 0,
+          size: 10,
+          ...queryInfo
+        }
+      })
+    }
 
+    getPageData()
+
+    //从vuex中获取数据
     const dataList = computed(() =>
       store.getters[`system/pageListData`](props.pageName)
     )
+    const dataCount = computed(() =>
+      store.getters[`system/pageListCount`](props.pageName)
+    )
     // const userCount = computed(() => store.state.system.userCount)
     return {
-      dataList
+      dataList,
+      getPageData,
+      dataCount
     }
   }
 })

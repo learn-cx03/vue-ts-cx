@@ -25,7 +25,7 @@ export const searchFormConfig: IForm = {
     }
   ],
   labelWidth: '120px',
-  itmeLayout: {
+  itemStyle: {
     padding: '10px 40px'
   },
   colLayout: {

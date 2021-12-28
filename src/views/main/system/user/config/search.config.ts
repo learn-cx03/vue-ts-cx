@@ -36,7 +36,7 @@ export const searchFormConfig: IForm = {
       ]
     },
     {
-      field: 'createaAt',
+      field: 'createAt',
       type: 'datepicker',
       label: '创建时间',
       otherOptions: {
@@ -47,7 +47,7 @@ export const searchFormConfig: IForm = {
     }
   ],
   labelWidth: '120px',
-  itmeLayout: {
+  itemStyle: {
     padding: '10px 40px'
   },
   colLayout: {

@@ -12,7 +12,7 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>
-            <span class="el-dropdown-link">
+            <span class="el-dropdown-link" @click="handleExitClick">
               <el-icon class="el-icon--left">
                 <cloudy />
               </el-icon>
@@ -31,13 +31,21 @@
 import { computed, defineComponent } from 'vue'
 import { Cloudy } from '@element-plus/icons'
 import { useStore } from '@/store'
+import { useRouter } from 'vue-router'
+import localCache from '@/utils/cache'
 export default defineComponent({
   setup() {
     const store = useStore()
     const name = computed(() => store.state.login.userInfo.name)
 
+    const router = useRouter()
+    const handleExitClick = () => {
+      localCache.deleteCache('token')
+      router.push('/main')
+    }
     return {
-      name
+      name,
+      handleExitClick
     }
   },
   components: {

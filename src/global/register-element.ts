@@ -32,7 +32,8 @@ import {
   ElTableColumn,
   ElPagination,
   ElImage,
-  ElDialog
+  ElDialog,
+  ElTree
 } from 'element-plus'
 import { App } from 'vue'
 const components = [
@@ -68,7 +69,8 @@ const components = [
   ElTableColumn,
   ElPagination,
   ElImage,
-  ElDialog
+  ElDialog,
+  ElTree
 ]
 export default function (app: App): void {
   for (const component of components) {

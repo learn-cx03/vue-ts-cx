@@ -2,6 +2,7 @@
   <div class="page-modal">
     <el-dialog v-model="dialogVisible" title="新建用户" width="30%" center>
       <cx-form v-bind="modalConfig" v-model="formData"></cx-form>
+      <slot></slot>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>

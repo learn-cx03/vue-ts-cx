@@ -47,6 +47,7 @@ import 'element-plus/theme-chalk/el-pagination.css'
 import 'element-plus/theme-chalk/el-image.css'
 import 'element-plus/theme-chalk/el-dialog.css'
 import 'element-plus/theme-chalk/el-tree.css'
+import 'element-plus/theme-chalk/el-card.css'
 
 export default defineComponent({
   name: 'App',
